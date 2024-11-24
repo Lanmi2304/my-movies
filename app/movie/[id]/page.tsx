@@ -1,8 +1,10 @@
 // import { Container } from "@/components/shared/wrapper/container";
+import { Container } from "@/components/shared/wrapper/container";
 import { PiClockDefaultStroke } from "@/components/ui/icon/pi-clock-default-stroke";
 import { PiStarStroke } from "@/components/ui/icon/pi-star-stroke";
 import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
+import { Casts } from "./_components/casts";
 
 const getMovieDetails = async (id: number) => {
   const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
@@ -32,7 +34,7 @@ export default async function MovieInfo({
 
   return (
     <>
-      <div className=" relative w-full h-[500px]">
+      <div className=" relative w-full h-[400px]">
         <Image
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
           alt={"Movie poster"}
@@ -41,12 +43,12 @@ export default async function MovieInfo({
         />
 
         <div className="rounded-b-md text-white w-full flex-col gap-2 flex px-4 absolute bottom-0 backdrop-blur-sm h-fit py-4 bg-black/75">
-          <h1 className=" text-3xl">{movie.title}</h1>
+          <h1 className=" text-2xl">{movie.title}</h1>
 
           <div className="flex gap-4">
             <div
               className={cn(
-                "font-bold text-xl flex items-center gap-2",
+                "font-bold text-lg flex items-center gap-2",
                 movie.vote_average <= 4
                   ? "text-red-500"
                   : movie.vote_average <= 7
@@ -57,16 +59,22 @@ export default async function MovieInfo({
               {movie.vote_average.toFixed(1)}
               <PiStarStroke className="size-5 text-orange-500" />
             </div>
-            <div className="flex font-bold text-xl items-center gap-2">
+            <div className="flex font-bold text-lg items-center gap-2">
               <p>{movie.runtime} min</p>
               <PiClockDefaultStroke className="size-5" />
             </div>
-            <p className="font-bold text-xl">{movie.release_date}</p>
+            <p className="font-bold text-lg">{movie.release_date}</p>
           </div>
         </div>
       </div>
 
-      <h1 className="text-4xl font-bold py-4">Overview</h1>
+      <Container>
+        <h1 className="text-3xl font-bold mt-10 mb-4">Overview</h1>
+        <p>{movie.overview}</p>
+
+        <h1 className="text-3xl font-bold mt-10 mb-4">Casts</h1>
+        <Casts id={Number(id)} />
+      </Container>
     </>
   );
 }
