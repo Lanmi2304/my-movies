@@ -1,8 +1,11 @@
+"use client";
+
 import { Movie } from "@/components/shared/movies";
 import { PiStarStroke } from "@/components/ui/icon/pi-star-stroke";
 import { categoryTitle } from "@/lib/utils/categories";
 import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function MovieCard({
   movie,
@@ -13,6 +16,7 @@ export function MovieCard({
   popular?: boolean;
   className?: string;
 }) {
+  const router = useRouter();
   const categories = movie.genre_ids
     .map((id) => categoryTitle(id))
     .splice(0, 2)
@@ -20,6 +24,7 @@ export function MovieCard({
 
   return (
     <div
+      onClick={() => router.push(`/movie/${movie.id}`)}
       className={cn(
         "flex flex-col mb-2 shadow-card rounded-lg overflow-hidden hover:scale-105 border",
         className

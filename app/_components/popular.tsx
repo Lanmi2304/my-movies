@@ -1,4 +1,4 @@
-import { MovieCard } from "../search/_components/movie-card";
+import { MovieCard } from "../../components/shared/movie-card";
 import { Container } from "@/components/shared/wrapper/container";
 import {
   Carousel,

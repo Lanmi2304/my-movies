@@ -1,13 +1,11 @@
-// app/search/movies-list.tsx
-
-import { Container } from "@/components/shared/wrapper/container";
-import { MovieCard } from "../../app/search/_components/movie-card";
+import { MovieCard } from "./movie-card";
 
 interface MoviesListProps {
   title: string;
 }
 
 export interface Movie {
+  id: number;
   language: "string";
   poster_path: string;
   title: string;
@@ -34,6 +32,8 @@ export default async function MoviesList({ title }: MoviesListProps) {
 
   const data = await res.json();
   const movies: [] = data.results || [];
+
+  console.log(movies);
 
   return (
     <div className="mt-20 px-1">
