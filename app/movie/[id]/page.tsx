@@ -52,8 +52,8 @@ export default async function MovieInfo({
                 movie.vote_average <= 4
                   ? "text-red-500"
                   : movie.vote_average <= 7
-                  ? "text-orange-500"
-                  : "text-green-500"
+                    ? "text-orange-500"
+                    : "text-green-500",
               )}
             >
               {movie.vote_average.toFixed(1)}

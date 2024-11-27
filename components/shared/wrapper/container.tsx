@@ -16,7 +16,7 @@ export function Container({
       className={cn(
         "container px-4 lg:px-8",
         !isComponent && "mb-14 lg:mb-0",
-        className
+        className,
       )}
       {...props}
     >

@@ -27,7 +27,7 @@ export function MovieCard({
       onClick={() => router.push(`/movie/${movie.id}`)}
       className={cn(
         "flex flex-col mb-2 shadow-card rounded-lg overflow-hidden hover:scale-105 border",
-        className
+        className,
       )}
     >
       <div className="relative w-full h-[320px]">
@@ -54,8 +54,8 @@ export function MovieCard({
               movie.vote_average <= 4
                 ? "text-red-500"
                 : movie.vote_average <= 7
-                ? "text-orange-500"
-                : "text-green-500"
+                  ? "text-orange-500"
+                  : "text-green-500",
             )}
           >
             {movie.vote_average.toFixed(1)}

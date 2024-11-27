@@ -15,7 +15,7 @@ export async function Popular() {
         accept: "application/json",
         Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
       },
-    }
+    },
   );
 
   if (!res.ok) {
